@@ -78,7 +78,38 @@ public class SnakeLadderGame {
 		}
 	}
 	
-	
+	public static void checkWinningPosition() {
+		int position = 0;
+		while (position<100) 
+		{
+			Random ran = new Random();
+			int dice = ran.nextInt(6)+1;
+			System.out.println("dice: "+dice);
+			int optionCheck = ran.nextInt(3);
+			System.out.println("optionCheck: "+optionCheck);
+			
+			
+			if ((optionCheck == ladder) && (position+dice)<=100) 
+			{
+				System.out.println("ladder");
+				position = position + dice;
+			}
+			else if (optionCheck == snake) 
+			{
+				System.out.println("Snake");
+				position = position - dice;
+			}
+			else {
+				System.out.println("Noplay");				
+			}
+			if (position<0) 
+			{
+				position =0;
+			}
+			System.out.println("position: "+position);
+			
+		}
+	}
 	
 	public static void main(String[] Args) {
         int start = 0;
@@ -86,5 +117,6 @@ public class SnakeLadderGame {
         rollDice();
         checkOption();
         winningPosition();
+        checkWinningPosition();
     }
 }
